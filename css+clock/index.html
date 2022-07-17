@@ -7,7 +7,6 @@
     <meta name="author" content="Pritam Debnath" />
     <title>clock</title>
     <style>
-        
       .clock {
         width: 15rem;
         height: 15rem;
@@ -18,24 +17,23 @@
       }
       .hand {
         height: 0.5rem;
-        background: rgba(255, 0, 0, 0.3);
-
         top: 50%;
         position: absolute;
         transform-origin: 100%;
         width: 50%;
-        transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
-        border-radius: 1rem;
+        border-radius: 1rem  ;
         transform: rotate(90deg);
       }
       .hourHand {
         background: rgba(255, 0, 0, 1);
       }
       .minHand {
-        background: rgba(255, 0, 0, 0.6);
+        background: rgba(255, 0, 0, 0.5);
+        height: 0.4rem;
       }
       .secHand {
         background: rgba(255, 0, 0, 0.3);
+        height: 0.3rem;
       }
     </style>
   </head>
