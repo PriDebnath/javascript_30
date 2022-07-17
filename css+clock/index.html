@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color scheme" content=" dark light" />
+    <meta name="author" content="Pritam Debnath" />
+    <title>clock</title>
+    <style>
+        
+      .clock {
+        width: 15rem;
+        height: 15rem;
+        border: 0.4rem solid red;
+        border-radius: 10rem;
+        position: relative;
+        margin: 5vh auto;
+      }
+      .hand {
+        height: 0.5rem;
+        background: rgba(255, 0, 0, 0.3);
+
+        top: 50%;
+        position: absolute;
+        transform-origin: 100%;
+        width: 50%;
+        transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
+        border-radius: 1rem;
+        transform: rotate(90deg);
+      }
+      .hourHand {
+        background: rgba(255, 0, 0, 1);
+      }
+      .minHand {
+        background: rgba(255, 0, 0, 0.6);
+      }
+      .secHand {
+        background: rgba(255, 0, 0, 0.3);
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="clock">
+      <div class="hand hourHand"></div>
+      <div class="hand minHand"></div>
+      <div class="hand secHand"></div>
+    </div>
+
+    <script>
+      function setDate() {
+        let hourHand = document.querySelector(".hourHand");
+        let minHand = document.querySelector(".minHand");
+        let secHand = document.querySelector(".secHand");
+        let currentTime = new Date();
+        let currentHour = currentTime.getHours();
+        let currentMin = currentTime.getMinutes();
+        let currentSec = currentTime.getSeconds();
+
+        hourHand.style.transform = `rotate(${30 * currentHour + 90}deg)`;
+
+        minHand.style.transform = `rotate(${6 * currentMin + 90}deg)`;
+
+        secHand.style.transform = `rotate(${6 * currentSec + 90}deg)`;
+      }
+
+      setInterval(setDate, 1000);
+    </script>
+  </body>
+</html>
