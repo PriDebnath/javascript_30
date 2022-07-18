@@ -1,161 +1,42 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color scheme" content="dark light" />
+    <title>Panels</title>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="color scheme" content="dark light">
-  <title>Panels</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-  <style>
-    * {
-      transition: font-size 0.2s,
-        flex 0.8s cubic-bezier(0.61, -0.20, 0.17, -.11),
-        background 1s,
-        transform .2s;
-
-    }
-
-
-    .panels {
-      display: flex;
-      background: forestgreen;
-      height: 100vh;
-      overflow: hidden;
-    }
-
-    .panel {
-      background: red;
-      flex: 1;
-      border: 2px solid black;
-      display: flex;
-      justify-items: center;
-      align-items: center;
-      flex-direction: column;
-
-
-    }
-
-    .panel p {
-      flex: 1;
-      display: flex;
-      justify-items: center;
-      align-items: center;
-      font-family: cursive;
-      text-transform: uppercase;
-    }
-
-
-    .panel>*:first-child {
-      transform: translateY(-100%);
-      text-transform: lowercase;
-    }
-
-    .panel>*:last-child {
-      transform: translateY(100%);
-      text-transform: lowercase;
-
-    }
-
-
-    .panel.active>*:first-child {
-      transform: translateY(0);
-    }
-
-    .panel.active>*:last-child {
-      transform: translateY(0);
-    }
-
-    .panel.open {
-      flex: 5;
-      font-size: 2rem;
-    }
-
-    .panel1 {
-      background: url("https://images.pexels.com/photos/12489081/pexels-photo-12489081.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2") center center/cover
-    }
-
-    .panel2 {
-      background: url("https://images.pexels.com/photos/1897669/pexels-photo-1897669.jpeg?auto=compress&cs=tinysrgb&w=1200&lazy=load") center center/cover
-    }
-
-    .panel3 {
-      background: url("https://images.pexels.com/photos/12488388/pexels-photo-12488388.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2") center center/cover
-    }
-
-    .panel4 {
-      background: url("https://images.pexels.com/photos/9430769/pexels-photo-9430769.jpeg?auto=compress&cs=tinysrgb&w=1200&lazy=load") center center/cover
-    }
-
-    .panel5 {
-      background: url("https://images.pexels.com/photos/937464/pexels-photo-937464.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2") center center/cover
-    }
-  </style>
-
-</head>
-
-<body>
-
-  <div class="panels">
-    <div class="panel panel1">
-      <p>love</p>
-      <p>nature</p>
-      <p>most</p>
+  <body>
+    <div class="panels">
+      <div class="panel panel1">
+        <p>love</p>
+        <p>nature</p>
+        <p>most</p>
+      </div>
+      <div class="panel panel2">
+        <p>love</p>
+        <p>travels</p>
+        <p>world</p>
+      </div>
+      <div class="panel panel3">
+        <p>avoid</p>
+        <p>city</p>
+        <p>life</p>
+      </div>
+      <div class="panel panel4">
+        <p>live</p>
+        <p>life</p>
+        <p>simply</p>
+      </div>
+      <div class="panel panel5">
+        <p>believe</p>
+        <p>god</p>
+        <p>most</p>
+      </div>
     </div>
-    <div class="panel  panel2">
-      <p>love</p>
-      <p>travels</p>
-      <p>world</p>
-    </div>
-    <div class="panel panel3">
-      <p>avoid</p>
-      <p>city</p>
-      <p>life</p>
-    </div>
-    <div class="panel panel4">
-      <p>live</p>
-      <p>life</p>
-      <p>simply</p>
-    </div>
-    <div class="panel  panel5">
-      <p>believe</p>
-      <p>god</p>
-      <p>most</p>
-    </div>
-  </div>
-  <script>
-    let panels = document.querySelectorAll('.panel')
-
-    function handleOpen(e) {
-      this.classList.toggle('open')
-    }
-
-    function handleTransationend(e) {
-
-      console.log(e.propertyName)
-      if (e.propertyName.includes('flex')) {
-        this.classList.toggle('active')
-
-      }
-
-    }
-
-
-    panels.forEach((panel) => {
-      panel.addEventListener('click', handleOpen)
-    })
-
-
-
-
-    panels.forEach((panel) => {
-      panel.addEventListener('transitionend', handleTransationend)
-
-    })
-  </script>
-
-
-
-</body>
-
+    <script src="./script.js"></script>
+  </body>
 </html>

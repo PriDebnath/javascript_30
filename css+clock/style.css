@@ -1,0 +1,33 @@
+body {
+  height: 100vh;
+  background: url("https://images.pexels.com/photos/12488388/pexels-photo-12488388.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2")
+    center center/cover;
+}
+.clock {
+  width: 15rem;
+  height: 15rem;
+  border: 0.4rem solid black;
+  border-radius: 10rem;
+  position: relative;
+  margin: 5vh auto;
+}
+.hand {
+  height: 0.5rem;
+  top: 50%;
+  position: absolute;
+  transform-origin: 100%;
+  width: 50%;
+  border-radius: 1rem;
+  transform: rotate(90deg);
+}
+.hourHand {
+  background: rgba(0, 0, 0, 1);
+}
+.minHand {
+  background: rgba(0, 0, 0, 0.5);
+  height: 0.4rem;
+}
+.secHand {
+  background: rgba(0, 0, 0, 0.3);
+  height: 0.3rem;
+}

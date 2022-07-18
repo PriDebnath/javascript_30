@@ -1,0 +1,16 @@
+:root {
+  --base-color: pink;
+  --spacing: 15px;
+  --blur: 2px;
+}
+
+img {
+  width: 100%;
+  background: var(--base-color);
+  padding: var(--spacing);
+  filter: blur(var(--blur));
+  box-shadow: 0 1rem 0.5rem var(--base-color);
+}
+.highlight {
+  color: var(--base-color);
+}

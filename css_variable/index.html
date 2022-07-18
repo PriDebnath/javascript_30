@@ -1,83 +1,47 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Pritam Debnath" />
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>css variable</title>
-  <style>
-  
-  :root{
-    --base-color : pink ;
-    --spacing : 15px ;
-    --blur : 2px ;
-  }
-  
-    img{
-      width: 100% ;
-      background: var(--base-color) ;
-      padding: var(--spacing) ;
-      filter: blur(var(--blur)) ;
-      box-shadow:0 1rem  0.5rem var(--base-color);
-    }
-    .highlight{
-      color: var(--base-color);
+    <title>css variable</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-    }
-    
-  </style>
-</head>
+  <body>
+    <h1>Update css variable with <span class="highlight">Js</span></h1>
 
-<body>
-  
-<h1>Update css variable with <span class="highlight">Js</span></h1>
+    <div class="controls">
+      <label for="spacing">Spacing</label>
+      <input
+        name="spacing"
+        type="range"
+        min="0"
+        max="100"
+        value="10"
+        data-spacing="px"
+      />
 
-<div class="controls">
-  
-  <label for="spacing">Spacing</label>
-  <input name="spacing" type="range" min="0" max="100" value="10" data-spacing="px">
-  
-  
-  <label for="blur">blur</label>
-  <input name="blur" type="range" min="0" max="25" value="0" data-spacing="px">
-  
-  
-  <label for="base-color">color</label>
-  
-  <input name="base-color" type="color" value="red" > 
-  
-  <img src="https://images.pexels.com/photos/2696064/pexels-photo-2696064.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="">
-  
-</div>
-<script>
-  let inputs = document.querySelectorAll('.controls input')
-  
-  function handleChange(){
-    
-    console.log(this.value)
-    
-    let surfix = this.dataset.spacing || '' ;
-    
-    // targeting css variable
-    
-    document.documentElement.style.setProperty(`--${this.name}`,this.value + surfix)
-    
-    
-    
-  }
-  
-  inputs.forEach((input)=>{
-    input.addEventListener('change',handleChange) 
-    input.addEventListener('mousemove',handleChange) 
-        input.addEventListener('touchmove',handleChange) 
+      <label for="blur">blur</label>
+      <input
+        name="blur"
+        type="range"
+        min="0"
+        max="25"
+        value="0"
+        data-spacing="px"
+      />
 
-  })
-  
-  
-  
-  
-</script>
+      <label for="base-color">color</label>
 
-</body>
+      <input name="base-color" type="color" value="red" />
 
+      <img
+        src="https://images.pexels.com/photos/2696064/pexels-photo-2696064.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+        alt=""
+      />
+    </div>
+    <script src="./script.js"></script>
+  </body>
 </html>
