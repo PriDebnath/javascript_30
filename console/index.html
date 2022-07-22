@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Pritam Debnath" />
+
+    <title>console</title>
+    <style>
+      pre {
+        padding: 1rem;
+        overflow: scroll;
+        background: #e7e9ff;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div>Eat</div>
+    <div>sleep</div>
+    <div>code</div>
+    <div>repeat</div>
+
+    <pre>
+    console.time('took to run')
+
+    let people = [
+
+      { name: 'pri', year: 2000 },
+      { name: 'piri', year: 1000 },
+      { name: 'pyari', year: 1500 },
+      { name: 'priye', year: 1400 },
+      { name: 'priy', year: 1600 },
+      { name: 'apri', year: 1900 },
+      { name: 'aipri', year: 1700 }
+    ]
+    console.group('people array')
+    console.table(people)
+    console.groupEnd('people array')
+
+
+    let sortedPeople = people.sort((a, b) => {
+      if (a.year > b.year) {
+        return 1
+      }
+      return -1
+    })
+
+
+    //  console.log(sortedPeople)
+
+    let docu = document.querySelectorAll('div')
+
+    let arr = [...docu]
+
+    let arrOfText = []
+
+
+    console.group('Dom Element')
+    console.log(arr)
+    console.groupEnd('Dom Element')
+
+    arr.map((ar) => {
+      // console.log(ar.textContent)
+      arrOfText.push(ar.innerText)
+    })
+    
+    
+    // console.log(arrOfText)
+
+    let arr1 = ['key', 'car', 'key', 'car', 'car', 'bike', 'car', 'bike', 'key', 'car', 'jet']
+    
+
+    let finalObj = arr1.reduce((obj, ar) => {
+      if (!obj[ar]) {
+        obj[ar] = 0;
+      }
+      obj[ar] = obj[ar] + 1
+
+
+      return obj
+
+    }, {})
+
+    console.group('Array to object')
+    console.log(finalObj)
+    console.groupEnd('Array to object')
+
+
+    console.log('%c I am great', 'font-size :3rem ; background: pink ;')
+
+    console.timeEnd('took to run')
+ 
+  </pre
+    >
+    <script>
+      console.time("took to run");
+
+      let people = [
+        { name: "pri", year: 2000 },
+        { name: "piri", year: 1000 },
+        { name: "pyari", year: 1500 },
+        { name: "priye", year: 1400 },
+        { name: "priy", year: 1600 },
+        { name: "apri", year: 1900 },
+        { name: "aipri", year: 1700 },
+      ];
+      console.group("people array");
+      console.table(people);
+      console.groupEnd("people array");
+
+      let sortedPeople = people.sort((a, b) => {
+        if (a.year > b.year) {
+          return 1;
+        }
+        return -1;
+      });
+
+      //  console.log(sortedPeople)
+
+      let docu = document.querySelectorAll("div");
+
+      let arr = [...docu];
+
+      let arrOfText = [];
+
+      console.group("Dom Element");
+      console.log(arr);
+      console.groupEnd("Dom Element");
+
+      arr.map((ar) => {
+        // console.log(ar.textContent)
+        arrOfText.push(ar.innerText);
+      });
+
+      // console.log(arrOfText)
+
+      let arr1 = [
+        "key",
+        "car",
+        "key",
+        "car",
+        "car",
+        "bike",
+        "car",
+        "bike",
+        "key",
+        "car",
+        "jet",
+      ];
+
+      let finalObj = arr1.reduce((obj, ar) => {
+        if (!obj[ar]) {
+          obj[ar] = 0;
+        }
+        obj[ar] = obj[ar] + 1;
+
+        return obj;
+      }, {});
+
+      console.group("Array to object");
+      console.log(finalObj);
+      console.groupEnd("Array to object");
+
+      console.log("%c I am great", "font-size :3rem ; background: pink ;");
+
+      console.timeEnd("took to run");
+    </script>
+  </body>
+</html>
