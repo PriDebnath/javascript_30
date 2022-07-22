@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="primitive vs reference" />
+    <meta name="author" content="Pritam Debnath" />
+
+    <title>primitive vs reference</title>
+  </head>
+  <style>
+    * {
+      font-size: 1.1rem;
+    }
+    pre {
+      background: #e7e9ff;
+      padding: 0.8rem;
+      border-radius: 0.5rem;
+    }
+  </style>
+
+  <body>
+    <div class="">
+      // how JavaScript store primitive and reference data type
+
+      <pre>
+    let num1 = 100;
+    let num2 = num1;
+
+    console.log(num1, num2) // 100 , 100
+
+    num1 = 200
+    
+    console.log(num1, num2) // 200 , 100
+</pre
+      >
+
+      // this happens because when storing a primitive data type JavaScript
+      store the value of the variable
+      <pre>
+
+    let arr1 = ['New array']
+
+    let arr2 = arr1
+
+    console.log(arr1, arr2)
+
+    // ['New arrar'] ['New arrar']
+    
+    arr = ['Updated array']
+
+    console.log(arr1, arr2)
+    
+    // ['New arrar'] ['New arrar']
+    
+  
+</pre
+      >
+      <p>
+        // this happens because when storing a reference typed data JavaScript
+        store the reference of variable
+      </p>
+
+      <p>
+        Tough I changed the value of arr1 still arr2's value get changed because
+        when I did arr1 = arr2 . means arr1 and arr2 pointing to the same
+        location of the memory so last changed value will be reflected in both
+        of them .
+      </p>
+    </div>
+
+    <script>
+      // how JavaScript store primitive and reference data type
+
+      let num1 = 100;
+      let num2 = num1;
+
+      console.log(num1, num2); // 100 , 100
+
+      num1 = 200;
+      console.log(num1, num2); // 200 , 100
+
+      // this happens because when storing a primitive data type JavaScript store the value of the variable
+
+      let arr1 = ["New array"];
+
+      let arr2 = arr1;
+
+      console.log(arr1, arr2);
+
+      // ['New arrar'] ['New arrar']
+
+      arr1 = ["Updated array"];
+
+      console.log(arr1, arr2);
+
+      // ['New arrar'] ['New arrar']
+
+      // this happens because when storing a reference typed data JavaScript store the reference of variable
+
+      // tough I changed the value of arr1 still arr2's  value get changed because when I did  arr1 = arr2 . means arr1 and arr2 pointing to the same location of the memory so last changed value will be reflected in both of them .
+    </script>
+  </body>
+</html>
