@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>key sequence detection</title>
+    <style>
+      input {
+        width: 15rem;
+        display: block;
+        margin: auto;
+        border: 0.1rem solid gray;
+      }
+      pre {
+        padding: 1rem;
+        background: #e7e9ff;
+        overflow: scroll;
+      }
+    </style>
+  </head>
+  <body>
+    <input type="text" id="input" />
+    
+    <pre>    let secretCode = "pri";
+        let pressed = [];
+  
+        let input = document.getElementById("input");
+  
+        input.addEventListener("keyup", function (e) { 
+          
+          pressed.push(e.key);
+      
+          // cutting out extra item from array
+          pressed.splice(
+            -secretCode.length - 1,
+            pressed.length - secretCode.length
+          );
+  
+          //it is like pressed.splice(-3,1 or 2 or 3)
+  
+  
+          console.log(pressed.length);
+  
+          if (pressed.join("") == secretCode) {
+            cornify_add();
+            console.log('you got me')
+          }
+        });</pre>
+
+    <script
+      type="text/javascript"
+      src="https://www.cornify.com/js/cornify.js"
+    ></script>
+
+    <script>
+      let secretCode = "pri";
+      let pressed = [];
+
+      let input = document.getElementById("input");
+
+      input.addEventListener("keyup", function (e) { 
+        
+        pressed.push(e.key);
+    
+        // cutting out extra item from array
+        pressed.splice(
+          -secretCode.length - 1,
+          pressed.length - secretCode.length
+        );
+
+        //it is like pressed.splice(-3,1 or 2 or 3)
+
+
+        console.log(pressed.length);
+
+        if (pressed.join("") == secretCode) {
+          cornify_add();
+          console.log('you got me')
+        }
+      });
+    </script>
+  </body>
+</html>
