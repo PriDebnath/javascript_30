@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Array cardio day 2 </title>
+  <style>
+    pre{
+      background: #E7E9FF ;
+      padding: 1rem ;
+      overflow: scroll ;
+      font-size: 1rem;
+    }
+  </style>
+</head>
+
+<body>
+
+  <pre>
+       //how  Some and Every works in JavaScript
+
+    const people = [
+      { name: 'Ava', year: 1988 },
+      { name: 'smith', year: 1986 },
+      { name: 'jhon', year: 1970 },
+      { name: 'Ana', year: 2015 }
+        ];
+        
+    
+    
+    
+    // Array.prototype.some() 
+    
+    // is at least one person 19?
+    
+    let isAdult = people.some((person)=>{
+      let currentYear = new Date().getFullYear()
+      
+      if(currentYear - person.year >= 19 ){
+        return true
+      }
+    })
+    
+    console.log(isAdult)
+   
+   //  true 
+   // because one of them fullfil the criteria
+    
+    
+    
+    
+    
+    
+    
+    // Array.prototype.every()
+    
+    // is everyone 19?
+    
+        let isEveryoneAdult = people.every((person)=>{
+      let currentYear = new Date().getFullYear()
+      
+      if(currentYear - person.year >= 19 ){
+        return true
+      }
+    })
+    
+    console.log(isEveryoneAdult)
+    
+    // false
+    // because  not everyone fullfiled the criteria
+    
+   
+    
+    
+    
+    
+    // Array.prototype.find()
+    
+    // Find is like filter, but instead of returning all elephant who fulfill the criteria it just returns just  one you are looking for
+    
+    // find Ana
+    
+    
+    const Ana = people.find((person)=> {
+      return person.name == 'Ana'
+    });
+    
+    console.log(Ana);
+    
+    // Array.prototype.findIndex()
+    
+    // Find index of Ana
+    
+    let indexOfAna = people.findIndex((person)=>{
+      return person.name == 'Ana'
+    })
+    
+    console.log('index of ana is ' +indexOfAna)
+    
+    // delete ana with his index
+    
+    people.splice(indexOfAna,1)
+
+    console.table(people)    
+    
+    
+    /*
+    
+    const newPeople = [
+     ... people.slice(0, indexOfAna),
+     ... people.slice(indexOfAna + 1)
+        ];
+    
+    */
+    
+    
+    // basically find and other methods mentioned above use to update delete some specific things 
+    
+    
+
+  </pre>
+
+  <script>
+    //how  Some and Every works in JavaScript
+
+    const people = [
+      { name: 'Ava', year: 1988 },
+      { name: 'smith', year: 1986 },
+      { name: 'jhon', year: 1970 },
+      { name: 'Ana', year: 2015 }
+        ];
+
+
+    const comments = [
+      { text: 'Love this!', id: 523423 },
+      { text: 'Super good', id: 823423 },
+      { text: 'You are the best', id: 2039842 },
+      { text: 'Ramen is my fav food ever', id: 123523 },
+      { text: 'Nice Nice Nice!', id: 542328 }
+        ];
+
+
+    // Array.prototype.some() 
+
+    // is at least one person 19?
+
+    let isAdult = people.some((person) => {
+      let currentYear = new Date().getFullYear()
+
+      if (currentYear - person.year >= 19) {
+        return true
+      }
+    })
+
+    console.log(isAdult)
+
+    //  true 
+    // because one of them fullfil the criteria
+
+
+
+
+
+
+
+    // Array.prototype.every()
+
+    // is everyone 19?
+
+    let isEveryoneAdult = people.every((person) => {
+      let currentYear = new Date().getFullYear()
+
+      if (currentYear - person.year >= 19) {
+        return true
+      }
+    })
+
+    console.log(isEveryoneAdult)
+
+    // false
+    // because  not everyone fullfiled the criteria
+
+
+
+
+
+
+    // Array.prototype.find()
+
+    // Find is like filter, but instead of returning all elephant who fulfill the criteria it just returns just  one you are looking for
+
+    // find Ana
+
+
+    const Ana = people.find((person) => {
+      return person.name == 'Ana'
+    });
+
+    console.log(Ana);
+
+    // Array.prototype.findIndex()
+
+    // Find index of Ana
+
+    let indexOfAna = people.findIndex((person) => {
+      return person.name == 'Ana'
+    })
+
+    console.log('index of ana is ' + indexOfAna)
+
+    // delete ana with his index
+
+    people.splice(indexOfAna, 1)
+
+    console.table(people)
+
+
+    /*
+    
+    const newPeople = [
+     ... people.slice(0, indexOfAna),
+     ... people.slice(indexOfAna + 1)
+        ];
+    
+    */
+
+
+    // basically find and other methods mentioned above use to update delete some specific things 
+  </script>
+
+</body>
+
+</html>
