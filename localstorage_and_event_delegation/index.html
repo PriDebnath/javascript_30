@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>localstorage</title>
+    <style>
+      * {
+        transition: 0.5s;
+      }
+      body {
+        background: url("https://images.pexels.com/photos/2467287/pexels-photo-2467287.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load")
+          no-repeat center center/cover;
+      }
+      li {
+        list-style: none;
+      }
+
+      .wrapper {
+        background: rgba(255, 255, 255, 0.8);
+        width: 20rem;
+        margin: 20vh auto;
+        padding: 1rem 2rem;
+        border-radius: 0.4rem;
+        box-shadow: 0 0.1rem 0.6rem rgba(0, 0, 0, 0.9);
+      }
+      .wrapper:hover {
+        box-shadow: none;
+        transform: scale(0.99);
+      }
+
+      .plates {
+        margin: 0;
+        padding: 0;
+        text-align: left;
+        list-style: none;
+        padding: 0.4rem;
+      }
+
+      .plates li {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+        padding: 10px 0;
+        font-weight: 100;
+        display: flex;
+      }
+
+      .plates label {
+        flex: 1;
+        cursor: pointer;
+      }
+
+      .plates input {
+        display: none;
+      }
+
+      .plates input + label:before {
+        content: "⬜️";
+        margin-right: 10px;
+      }
+
+      .plates input:checked + label:before {
+        content: "✅";
+      }
+
+      .add-items {
+        margin-top: 20px;
+      }
+
+      .add-items input {
+        cursor: pointer;
+        padding: 10px;
+        outline: 0;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+      }
+
+      ul {
+        background: white;
+        border-radius: 0.4rem;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <form class="add-items">
+        <input type="text" name="item" placeholder="Item Name" required />
+        <input type="submit" value=" Add Item" />
+      </form>
+      <h2>LOCAL TAPAS</h2>
+      <ul class="plates"></ul>
+    </div>
+
+    <script>
+      const items = JSON.parse(localStorage.getItem("items")) || [];
+
+      const addItems = document.querySelector(".add-items");
+      const itemsList = document.querySelector(".plates");
+
+      function addItem(e) {
+        e.preventDefault();
+
+        let text = this.querySelector("[name=item]").value;
+        let item = {
+          text: text,
+          done: false,
+        };
+        items.push(item);
+        populateItems(items, itemsList);
+        localStorage.setItem("items", JSON.stringify(items));
+        this.reset();
+        console.log(items);
+      }
+
+      function populateItems(items = [], location) {
+        location.innerHTML = items
+          .map((item, i) => {
+            return `<li>
+      <input type="checkbox" data-index=${i} id=item${i}  ${
+              item.done ? "checked" : ""
+            } >
+       <label for=item${i}>
+         ${item.text}
+       </label>
+     </li>`;
+          })
+          .join("");
+      }
+
+      populateItems(items, itemsList);
+      console.log(items);
+
+      function toggleCheck(e) {
+        if (!e.target == "input") {
+          return;
+        }
+
+        let element = e.target;
+        let elementIndex = element.dataset.index;
+
+        items[elementIndex].done = !items[elementIndex].done;
+        console.log(items[elementIndex]);
+
+        localStorage.setItem("items", JSON.stringify(items));
+        populateItems(items, itemsList);
+      }
+
+      addItems.addEventListener("submit", addItem);
+
+      itemsList.addEventListener("click", toggleCheck);
+    </script>
+  </body>
+</html>
