@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Array cardio day 1</title>
+
+  <style>
+    a {
+      font-size: 1.3rem;
+      display: block;
+    }
+    pre{
+      overflow: scroll ;
+      background: #E7E9FF ;
+      padding: 1rem ;
+      font-size: 1rem;
+    }
+  </style>
+
+</head>
+
+<body>
+
+
+  <a href="https://pridebnath.github.io/portfolio/">Pritam's profile</a>
+  <a href="https://ishowbypri.netlify.app/">Movie app</a>
+  <a href="https://pridebnath.github.io/weather_app/">Weather app by pri</a>
+  <pre>
+  let people = [
+
+      {
+        name: 'Wendy',
+        last: 'Fraser',
+        born: 1200,
+        passed: 1259
+},
+      {
+        name: 'Jessica',
+        last: 'Thomson',
+        born: 1600,
+        passed: 1639
+},
+      {
+        name: 'Michelle',
+        last: 'Howard',
+        born: 1200,
+        passed: 1249
+},
+      {
+        name: 'Caroline',
+        last: 'Underwood',
+        born: 1260,
+        passed: 1299
+},
+      {
+        name: 'Yue',
+        last: 'Coleman',
+        born: 1240,
+        passed: 1259
+},
+      {
+        name: 'Anne',
+        last: 'Fraser',
+        born: 1650,
+        passed: 1679
+},
+      {
+        name: 'Andrea',
+        last: 'Bailey',
+        born: 1700,
+        passed: 1759
+},
+      {
+        name: 'Heather',
+        last: 'Bailey',
+        born: 1500,
+        passed: 1599
+},
+      {
+        name: 'Victoria',
+        last: 'Rutherford',
+        born: 1550,
+        passed: 1599
+},
+      {
+        name: 'Emily',
+        last: 'Churchill',
+        born: 1600,
+        passed: 1699
+},
+      {
+        name: 'Emile',
+        last: 'chill',
+        born: 1700,
+        passed: 1769
+}
+
+   ]
+
+    // 1. filter people who were born in 1600s
+
+
+    let sixteen = people.filter((person) => {
+      return person.born < 1700 && person.born > 1600
+    })
+
+    console.table(sixteen)
+
+
+    //  Array.prototype.map
+
+
+    // 2. create a array of people names from people array
+
+
+    let names = people.map((person) => {
+      return `${person.name} ${person.last}`
+    })
+
+    console.log(names)
+
+
+
+
+    // 3. sort people old to young
+
+
+    let oldToYoung = people.sort((a, b) => {
+      if (a.born > b.born) {
+        return -1
+      } else {
+        return 1
+      }
+    })
+console.group('Old to young')
+    console.table(oldToYoung)
+console.groupEnd('Old to young')
+
+    // 4.  calculate how many year all person  lived
+
+
+    let totalLived = people.map((person) => {
+      return {
+        name: person.name,
+        lived: person.passed - person.born
+      }
+    })
+    
+     console.group('People lived')
+    console.table(totalLived)
+     console.groupEnd('People lived')
+
+
+    //  Array.prototype.reduce
+
+    // 5. calculate how many year all person total lived
+
+
+
+    let totalYears = people.reduce((preVal, person) => {
+      return preVal + (person.passed - person.born)
+    }, 0)
+
+    console.log('Total years ' + totalYears)
+
+
+    // 6. Sort the people alphabetically by last name
+
+    const alpha = names.sort((a,b) => {
+      
+      let aParts = a.split(' ')
+
+      let [aFirst , aLast] = aParts
+      
+      let bParts = b.split(' ')
+      
+      let [bFirst , bLast] = bParts
+      
+      if ( aFirst < bFirst){
+        return - 1
+      }else{
+        return 1
+      }
+
+      
+    });
+    
+    
+    console.group('Alphabetic way')
+    console.table(alpha);
+    console.groupEnd('Alphabetic way')
+
+
+
+    // 7. Sum up the instances of each of these
+    const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck', 'pogostick'];
+
+    const transportation = data.reduce((obj, item) => {
+      if (!obj[item]) {
+        obj[item] = 0;
+      }
+      obj[item] = obj[item] + 1;
+      return obj;
+    }, {});
+
+    console.log(transportation)
+
+
+
+  // 8. finding pri
+
+    // querySelectorAll returns nodelist
+    // making array from nodelist
+
+
+    // let links =Array.from(document.querySelectorAll('a'))
+    let links = [...document.querySelectorAll('a')]
+    
+    let pri = links.map((link)=>{
+      return link.textContent
+    }).filter((word)=>{
+      let reg = /pri/ig
+      return word.match(reg)
+    })
+   
+   
+   console.log(pri)
+    
+    
+
+</pre>
+
+  <script>
+    // Array cardia day 1
+
+
+    let people = [
+
+      {
+        name: 'Wendy',
+        last: 'Fraser',
+        born: 1200,
+        passed: 1259
+},
+      {
+        name: 'Jessica',
+        last: 'Thomson',
+        born: 1600,
+        passed: 1639
+},
+      {
+        name: 'Michelle',
+        last: 'Howard',
+        born: 1200,
+        passed: 1249
+},
+      {
+        name: 'Caroline',
+        last: 'Underwood',
+        born: 1260,
+        passed: 1299
+},
+      {
+        name: 'Yue',
+        last: 'Coleman',
+        born: 1240,
+        passed: 1259
+},
+      {
+        name: 'Anne',
+        last: 'Fraser',
+        born: 1650,
+        passed: 1679
+},
+      {
+        name: 'Andrea',
+        last: 'Bailey',
+        born: 1700,
+        passed: 1759
+},
+      {
+        name: 'Heather',
+        last: 'Bailey',
+        born: 1500,
+        passed: 1599
+},
+      {
+        name: 'Victoria',
+        last: 'Rutherford',
+        born: 1550,
+        passed: 1599
+},
+      {
+        name: 'Emily',
+        last: 'Churchill',
+        born: 1600,
+        passed: 1699
+},
+      {
+        name: 'Emile',
+        last: 'chill',
+        born: 1700,
+        passed: 1769
+}
+
+   ]
+
+    // 1. filter people who were born in 1600s
+
+
+    let sixteen = people.filter((person) => {
+      return person.born < 1700 && person.born > 1600
+    })
+
+    console.table(sixteen)
+
+
+    //  Array.prototype.map
+
+
+    // 2. create a array of people names from people array
+
+
+    let names = people.map((person) => {
+      return `${person.name} ${person.last}`
+    })
+
+    console.log(names)
+
+
+
+
+    // 3. sort people old to young
+
+
+    let oldToYoung = people.sort((a, b) => {
+      if (a.born > b.born) {
+        return -1
+      } else {
+        return 1
+      }
+    })
+    console.group('Old to young')
+    console.table(oldToYoung)
+    console.groupEnd('Old to young')
+
+    // 4.  calculate how many year all person  lived
+
+
+    let totalLived = people.map((person) => {
+      return {
+        name: person.name,
+        lived: person.passed - person.born
+      }
+    })
+
+    console.group('People lived')
+    console.table(totalLived)
+    console.groupEnd('People lived')
+
+
+    //  Array.prototype.reduce
+
+    // 5. calculate how many year all person total lived
+
+
+
+    let totalYears = people.reduce((preVal, person) => {
+      return preVal + (person.passed - person.born)
+    }, 0)
+
+    console.log('Total years ' + totalYears)
+
+
+    // 6. Sort the people alphabetically by last name
+
+    const alpha = names.sort((a, b) => {
+
+      let aParts = a.split(' ')
+
+      let [aFirst, aLast] = aParts
+
+      let bParts = b.split(' ')
+
+      let [bFirst, bLast] = bParts
+
+      if (aFirst < bFirst) {
+        return -1
+      } else {
+        return 1
+      }
+
+
+    });
+
+
+    console.group('Alphabetic way')
+    console.table(alpha);
+    console.groupEnd('Alphabetic way')
+
+
+
+    // 7. Sum up the instances of each of these
+    const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck', 'pogostick'];
+
+    const transportation = data.reduce((obj, item) => {
+      if (!obj[item]) {
+        obj[item] = 0;
+      }
+      obj[item] = obj[item] + 1;
+      return obj;
+    }, {});
+
+    console.log(transportation)
+
+
+
+    // 8. finding pri
+
+    // querySelectorAll returns nodelist
+    // making array from nodelist
+
+
+    // let links =Array.from(document.querySelectorAll('a'))
+    let links = [...document.querySelectorAll('a')]
+
+    let pri = links.map((link) => {
+      return link.textContent
+    }).filter((word) => {
+      let reg = /pri/ig
+      return word.match(reg)
+    })
+
+
+    console.log(pri)
+  </script>
+
+
+</body>
+
+</html>
