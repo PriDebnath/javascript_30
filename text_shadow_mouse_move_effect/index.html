@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>css text shadow</title>
+
+  <style>
+    body {
+      background: #DEE1FF;
+      
+    }
+
+    .container {
+      background: white;
+     
+      height: 96vh;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: inset 0 0 10rem #DEE1FF;
+font-family: cursive;
+    }
+
+    h1 {
+      text-shadow: 0.8rem 0.8rem 0 rgba(0, 0, 0, 0.3);
+      width: 80%;
+      text-align: center;
+      transition: 0.3s ;
+
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <h1>Created with &#10084;&#65039; by  Pritam</h1>
+
+  </div>
+
+  <script>
+    let container = document.querySelector('.container')
+    let h1 = document.querySelector('h1')
+    let walk = 40 ;
+
+    function shadow(e) {
+
+      //element.offset values of an element are the actual size of that elements
+
+      // means offsetWidth of container is the actual width of container
+
+      let width = container.offsetWidth
+      let height = container.offsetHeight
+
+      // we can do restructuring as well 
+      //  let { offsetwidth : width , offsetHeight : height } = container
+
+
+      // event.offset value of an element are the position of the element where the event occurred 
+
+      //means offsetX of container is where (px) the event occurred 
+
+
+      let x = e.offsetX
+      let y = e.offsetY
+
+      if (this != e.target) {
+        x = x + e.offsetLeft
+        y = y + e.offsetBottom
+      }
+
+      let xWalk = Math.round((x / width * walk) - (walk / 2))
+      let yWalk = Math.round((y / height * walk) - (walk / 2))
+
+      h1.style.textShadow = `${xWalk}px ${yWalk}px 0 rgba(0,0,0,0.3)`
+
+
+    }
+
+    container.addEventListener('mousemove', shadow)
+  </script>
+</body>
+
+</html>
