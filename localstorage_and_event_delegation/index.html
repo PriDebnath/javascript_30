@@ -91,6 +91,10 @@
     </div>
 
     <script>
+      let item = {
+        text: text,
+        done: false,
+      };
       const items = JSON.parse(localStorage.getItem("items")) || [];
 
       const addItems = document.querySelector(".add-items");
@@ -100,10 +104,7 @@
         e.preventDefault();
 
         let text = this.querySelector("[name=item]").value;
-        let item = {
-          text: text,
-          done: false,
-        };
+
         items.push(item);
         populateItems(items, itemsList);
         localStorage.setItem("items", JSON.stringify(items));
@@ -114,11 +115,11 @@
       function populateItems(items = [], location) {
         location.innerHTML = items
           .map((item, i) => {
-            return `<li>
+            return `<li >
       <input type="checkbox" data-index=${i} id=item${i}  ${
               item.done ? "checked" : ""
             } >
-       <label for=item${i}>
+       <label  for=item${i}>
          ${item.text}
        </label>
      </li>`;

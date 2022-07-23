@@ -29,6 +29,12 @@
       border-radius: 0 0 0.4rem 0.4rem;
       height: 0;
       width: 20rem;
+      -ms-overflow-style: none; /* IE and Edge */
+      scrollbar-width: none; /* Firefox */
+    }
+
+    .suggestions::-webkit-scrollbar {
+      display: none;
     }
 
     .active {
@@ -56,7 +62,7 @@
   </style>
 
   <body>
-    <input type="text" id="serchInput" />
+    <input type="text" id="serchInput" placeholder="Search for location" />
     <div class="suggestions">Not found</div>
   </body>
 
