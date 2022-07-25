@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>draw</title>
+  <style>
+    body,html{
+        margin: 0;
+    }
+   
+    input{
+        display: block;
+        margin: auto;
+    }
+    #range{
+        width: 100%;
+        margin: 0;
+        display: block;
+        padding: 0;
+        background : rgb(183, 17, 198);
+
+    }
+    .controls{
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+  </style>
+</head>
+<body>
+<canvas id="draw"></canvas>
+<div class="controls">
+
+<input type="color" id="color">
+<input type="range" id="range" >
+</div>
+
+<script>
+
+const canvas = document.querySelector('#draw');
+
+const color = document.getElementById('color')
+
+const range = document.getElementById('range')
+
+
+function handleColor(e){
+    console.log(this.value)
+    ctx.strokeStyle = this.value ;
+}
+
+function handleRange(e){
+    ctx.lineWidth = this.value
+    console.log(this.value)
+}
+range.addEventListener('change',handleRange)
+
+color.addEventListener('change',handleColor)
+
+const ctx = canvas.getContext('2d');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+////ctx.lineJoin = 'round';
+ctx.lineCap = 'round';
+ctx.lineWidth = 10;
+
+
+
+
+
+let isDrawing = false;
+let lastX = 0;
+let lastY = 0;
+
+function draw(e) {
+  if (!isDrawing) return;
+   // stop the fn from running when they are not moused down
+
+  //console.log(e);
+
+  ctx.beginPath();
+  // start from
+  ctx.moveTo(lastX, lastY);
+  // go to
+  ctx.lineTo(e.offsetX, e.offsetY);
+  ctx.stroke();
+  [lastX, lastY] = [e.offsetX, e.offsetY];
+}
+
+canvas.addEventListener('mousedown', (e) => {
+  isDrawing = true;
+  [lastX, lastY] = [e.offsetX, e.offsetY];
+});
+
+
+canvas.addEventListener('mousemove', draw);
+canvas.addEventListener('mouseup', () => isDrawing = false);
+canvas.addEventListener('mouseout', () => isDrawing = false);
+
+</script>
+
+</body>
+</html>
