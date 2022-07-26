@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>dev tools Tricks!</title>
+    <style>
+      pre {
+        padding: 1rem;
+        overflow: scroll;
+      }
+    </style>
+  </head>
+  <body>
+    <p onClick="makeGreen()">×BREAK×DOWN×</p>
+    <p>
+      Target any html element > right click > Breack on > Atribute modification
+      > click on any html element
+    </p>
+    <pre>
+        console.time("time");
+        const dogs = [
+          { name: "Snickers", age: 2 },
+          { name: "hugo", age: 8 },
+        ];
+        const p = document.querySelector("p");
+        function makeGreen() {
+          p.style.color = "lime";
+          p.style.fontSize = "2rem";
+        }
+  
+        // Interpolated
+  
+        console.log("My name is %s !", "pritam");
+  
+        // Styled
+  
+        console.log("%c hey !", "font-size:2rem;background:green");
+  
+        // warning!
+  
+        console.warn("ignored my hey . really ?");
+  
+        // Error :|
+  
+        console.error("good bye . tata");
+  
+        // Info
+  
+        console.info("Statue of unity costs 2000 crore");
+  
+        // Testing
+  
+        console.assert(1 === 2, "it is not true dev");
+  
+        // clearing
+  
+        //  console.clear()
+  
+        // Viewing DOM Elements
+  
+        console.log(p);
+  
+        // Grouping together
+  
+        dogs.forEach((dog) => {
+          console.group(dog.name);
+          console.log(dog.name + " is " + dog.age + " years old");
+          console.groupEnd(dog.name);
+        });
+  
+        // counting
+  
+        console.count("hi");
+        console.count("hi");
+        console.count("hi");
+  
+        // timing
+  
+        console.timeEnd("time");
+  
+        // table
+  
+        console.table(dogs);</pre
+    >
+
+    <script>
+      console.time("time");
+      const dogs = [
+        { name: "Snickers", age: 2 },
+        { name: "hugo", age: 8 },
+      ];
+      const p = document.querySelector("p");
+      function makeGreen() {
+        p.style.color = "lime";
+        p.style.fontSize = "2rem";
+      }
+
+      // Interpolated
+
+      console.log("My name is %s !", "pritam");
+
+      // Styled
+
+      console.log("%c hey !", "font-size:2rem;background:green");
+
+      // warning!
+
+      console.warn("ignored my hey . really ?");
+
+      // Error :|
+
+      console.error("good bye . tata");
+
+      // Info
+
+      console.info("Statue of unity costs 2000 crore");
+
+      // Testing
+
+      console.assert(1 === 2, "it is not true dev");
+
+      // clearing
+
+      //  console.clear()
+
+      // Viewing DOM Elements
+
+      console.log(p);
+
+      // Grouping together
+
+      dogs.forEach((dog) => {
+        console.group(dog.name);
+        console.log(dog.name + " is " + dog.age + " years old");
+        console.groupEnd(dog.name);
+      });
+
+      // counting
+
+      console.count("hi");
+      console.count("hi");
+      console.count("hi");
+
+      // timing
+
+      console.timeEnd("time");
+
+      // table
+
+      console.table(dogs);
+    </script>
+  </body>
+</html>
