@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Understanding JavaScript's Capture</title>
+  <style>
+    html {
+      box-sizing: border-box;
+    }
+
+    *,
+    *:before,
+    *:after {
+      box-sizing: inherit;
+    }
+
+    div {
+      width: 100%;
+      padding: 10%;
+    }
+
+    .one {
+      background: thistle;
+    }
+
+    .two {
+      background: mistyrose;
+    }
+
+    .three {
+      background: coral;
+    }
+    button{
+      font-size: 2rem ;
+      display: block;
+      margin: 1rem auto;
+    }
+  </style>
+
+</head>
+
+<body class="body">
+
+  <div class="one">One --
+    <div class="two">
+      Two --
+      <div class="three">
+        Three -- <br><br>We can set bouble or capture in the third argument of an addEventLister .
+        <br><br>
+        // default behaviour of browser is bouble . as a bouble goes down to up here the bouble phase is same it goes child to parent, down to up .
+        <br><br>
+        // meaning capture is set to false as default if we set the capture to true it would triggered capture phase .
+        <br><br>
+        /*
+        we can forcefully stop them with event.stopPropagation()
+        this will stop the behaviour of going up and down by bouble and capture .
+        It will stop after completing the earliest action
+        meaning bouble with stopPropagation() will trigger event on clicked element(child) only
+        and capture with stopPropagation() will trigger event on parent only
+        */
+
+
+      </div>
+    </div>
+  </div>
+
+
+  <button>Once</button>
+  <p>   we can set once property in event listener to true that will call the event once only
+</p>
+  <script>
+    let divs = document.querySelectorAll('div')
+
+    // we can set bouble or capture in the third argument of an addEventLister .
+
+    // default  behaviour of browser is bouble . as a bouble goes down to up here the bouble phase is same it goes child to parent, down to up .
+
+    // meaning capture is set to false as default if we set the capture to true it would triggered capture phase .
+
+    /* 
+    we can forcefully stop them with event.stopPropagation()
+      this will stop the behaviour of going up and down by bouble and capture .
+      It will stop after completing the earliest action
+      meaning bouble with stopPropagation() will trigger event on clicked element(child) only
+      and capture with stopPropagation() will trigger event on parent only
+    */
+    
+    
+
+    function logText(e) {
+
+      // e.stopPropagation()
+      console.log(this.classList[0])
+
+    }
+
+
+    divs.forEach((div) => {
+      div.addEventListener('click', logText,false)
+    })
+    
+   // we can set once property in event listener to true that will call the event once only
+
+    
+    let onceBtn = document.querySelector('button')
+    
+    onceBtn.addEventListener('click',()=>{
+      
+      console.log('I will run once only because the once property in event listener is set to true')
+      alert('once only')
+    },{once:true})
+    
+    
+    
+  </script>
+</body>
+
+</html>
