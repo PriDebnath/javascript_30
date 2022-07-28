@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Count down timer</title>
+  </head>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-weight: 900;
+    }
+    body{
+        background: rgb(213, 211, 211);
+    }
+
+    .controls {
+      display: flex;
+      background:blue;
+      align-items: stretch;
+      color: white;
+      justify-content: space-between;
+      box-shadow: 0.3rem 0.3rem 0.3rem rgba(0,0,255,0.3);
+    }
+    .controls > * {
+      flex: 1;
+    }
+    #input {      color: white;
+
+      width: 100%;
+background: blue;
+      display: block;
+      border: none;
+      padding: 0.4rem;
+    }
+    form {
+      display: block;
+      width: 30%;
+    }
+    button {      color: white;
+
+      display: block;
+      background: blue;
+      border: none;
+    }
+    h1{
+        text-align: center;
+    }
+  </style>
+  <body>
+    <div class="controls">
+      <button type="submit" data-time="20">20s</button>
+      <button type="submit" data-time="180">3 min</button>
+      <button type="submit" data-time="300">5 min</button>
+      <button type="submit" data-time="900">15 min</button>
+      <form id="form">
+        <input type="number" placeholder="custom" name="minutes" id="input" />
+      </form>
+    </div>
+
+    <h1 class="displayTimeLeft"></h1>
+    <h1 class="backin"></h1>
+  </body>
+
+  <script>
+    let countdown;
+    let displayTimeLeft = document.querySelector(".displayTimeLeft");
+    let backin = document.querySelector(".backin");
+
+
+    let times = document.querySelectorAll("[data-time]");
+ let customForm =  document.getElementById('form')
+    function setTime(e) {
+      let sec = parseInt(this.dataset.time);
+
+      timer(sec);
+    }
+
+    times.forEach((time) => {
+      time.addEventListener("click", setTime);
+    });
+
+    // let countdown
+
+    function timer(seconds) {
+      // clear any existing timers
+      clearInterval(countdown);
+
+      displaySeconds(seconds);
+      let then = new Date().getTime() + seconds * 1000;
+
+      displayEndTime(then);
+
+      countdown = setInterval(() => {
+        let secondsLeft = (then - new Date().getTime()) / 1000;
+        // console.log(secondsLeft)
+
+        // to stop the countdown
+
+        if (secondsLeft < 0) {
+          clearInterval(countdown);
+          return;
+        }
+
+        // to display
+
+        displaySeconds(secondsLeft);
+      }, 1000);
+    }
+
+    function displaySeconds(seconds) {
+      let minutes = Math.floor(seconds / 60);
+      let secondsLeft = Math.floor(seconds % 60);
+      if (secondsLeft < 10) {
+        secondsLeft = "0" + secondsLeft;
+      }
+
+      let time = minutes + " : " + secondsLeft;
+
+      console.log(minutes, secondsLeft);
+
+      displayTimeLeft.innerText = time;
+
+      document.title = time;
+    }
+
+    // timer(1620)
+
+    function displayEndTime(then) {
+      let time = new Date(then);
+      let hours = time.getHours();
+      let minutes = time.getMinutes();
+
+      backin.innerText = `Be back at ${hours > 12 ? hours - 12 : hours} :  ${
+        minutes < 10 ? "0" + minutes : minutes
+      }`;
+
+      console.log(time);
+    }
+
+    customForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const mins = this.minutes.value;
+      console.log(mins);
+      timer(mins * 60);
+      this.reset();
+    });
+  </script>
+</html>
