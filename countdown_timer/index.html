@@ -10,25 +10,26 @@
       box-sizing: border-box;
       font-weight: 900;
     }
-    body{
-        background: rgb(213, 211, 211);
+    body {
+      background: rgb(213, 211, 211);
     }
 
     .controls {
       display: flex;
-      background:blue;
+      background: blue;
       align-items: stretch;
       color: white;
       justify-content: space-between;
-      box-shadow: 0.3rem 0.3rem 0.3rem rgba(0,0,255,0.3);
+      box-shadow: 0.3rem 0.3rem 0.3rem rgba(0, 0, 255, 0.3);
     }
     .controls > * {
       flex: 1;
     }
-    #input {      color: white;
+    #input {
+      color: white;
 
       width: 100%;
-background: blue;
+      background: blue;
       display: block;
       border: none;
       padding: 0.4rem;
@@ -37,14 +38,15 @@ background: blue;
       display: block;
       width: 30%;
     }
-    button {      color: white;
+    button {
+      color: white;
 
       display: block;
       background: blue;
       border: none;
     }
-    h1{
-        text-align: center;
+    h1 {
+      text-align: center;
     }
   </style>
   <body>
@@ -67,9 +69,8 @@ background: blue;
     let displayTimeLeft = document.querySelector(".displayTimeLeft");
     let backin = document.querySelector(".backin");
 
-
     let times = document.querySelectorAll("[data-time]");
- let customForm =  document.getElementById('form')
+    let customForm = document.getElementById("form");
     function setTime(e) {
       let sec = parseInt(this.dataset.time);
 
