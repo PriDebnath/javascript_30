@@ -10,6 +10,7 @@ body {
   border-radius: 10rem;
   position: relative;
   margin: 5vh auto;
+  box-shadow: inset 0 0 1rem black;
 }
 .hand {
   height: 0.5rem;

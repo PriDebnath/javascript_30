@@ -11,7 +11,7 @@
       body {
         background: url("https://images.pexels.com/photos/2467287/pexels-photo-2467287.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load")
           no-repeat center center/cover;
-  height : 100vh ;
+        height: 100vh;
       }
       li {
         list-style: none;
@@ -92,10 +92,6 @@
     </div>
 
     <script>
-      let item = {
-        text: text,
-        done: false,
-      };
       const items = JSON.parse(localStorage.getItem("items")) || [];
 
       const addItems = document.querySelector(".add-items");
@@ -105,7 +101,10 @@
         e.preventDefault();
 
         let text = this.querySelector("[name=item]").value;
-
+        let item = {
+          text: text,
+          done: false,
+        };
         items.push(item);
         populateItems(items, itemsList);
         localStorage.setItem("items", JSON.stringify(items));
@@ -113,23 +112,25 @@
         console.log(items);
       }
 
+      
       function populateItems(items = [], location) {
         location.innerHTML = items
           .map((item, i) => {
             return `<li >
-      <input type="checkbox" data-index=${i} id=item${i}  ${
-              item.done ? "checked" : ""
-            } >
-       <label  for=item${i}>
-         ${item.text}
-       </label>
-     </li>`;
+                     <input type="checkbox" data-index=${i} id=item${i}  ${
+                            item.done ? "checked" : ""
+                          } >
+                      <label  for=item${i}>
+                        ${item.text}
+                      </label>
+                    </li>`;
           })
           .join("");
       }
 
       populateItems(items, itemsList);
       console.log(items);
+
 
       function toggleCheck(e) {
         if (!e.target.matches("input")) {

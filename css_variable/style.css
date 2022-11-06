@@ -9,7 +9,7 @@ img {
   background: var(--base-color);
   padding: var(--spacing);
   filter: blur(var(--blur));
-  box-shadow: 0 1rem 0.5rem var(--base-color);
+  box-shadow: 0 0.5rem 0.5rem var(--base-color);
 }
 .highlight {
   color: var(--base-color);
